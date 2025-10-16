@@ -1,6 +1,12 @@
-/env
-*.md
+/env/
+/node_modules/
 .env
+credentials.json
+*.key
+*.pem
+!package.json
 feedback.txt
-credential.json
-Documentation.xlsx
+
+__pycache__/
+*.py[cod]
+*.pyo
