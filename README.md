@@ -2,58 +2,68 @@
 
 ### 🏫 Developed under Infosys Springboard Internship 6.0
 
-This project leverages **Natural Language Processing (NLP)**, **Machine Learning**, **Knowledge Graphs**, and a **stack-based notification system for low coverage areas** to build an intelligent, reliable, and context-aware support engine.
+This project leverages **Natural Language Processing (NLP)**, **Machine Learning**, **Knowledge Graphs**, and a **Slack-based notification system for low coverage areas** to build an intelligent, reliable, and context-aware support engine.
 
 ---
 
 ## 🚀 Overview
 
 The **AI-Powered Knowledge Engine** automates customer support and ticket management by:
+
 - Classifying and prioritizing support tickets.
 - Suggesting context-based resolutions.
 - Automating ticket workflows using machine learning.
-- Handling notifications in low connectivity regions through a stack-based message queuing system.
+- Handling notifications in low connectivity regions through a **Slack-based messaging system**.
 
 ---
 
 ## 🧩 Key Features
 
-- 🧠 **AI Question Answering** – Understands user queries and provides contextual answers.  
-- 📊 **Ticket Classification & Validation** – Categorizes tickets and evaluates model performance.  
-- 📈 **Interactive Dashboard** – Displays metrics like Accuracy, Precision, Recall, and F1-score.  
-- 🔄 **Google Sheets Integration** – Dynamically reads and updates records using Google Sheets API.  
-- 🧱 **Stack-Based Notification System** – Stores and pushes alerts when connectivity is restored.  
-- 🧰 **Secure & Scalable Design** – Environment variables and credentials kept isolated and secure.
+- 🧠 **AI Question Answering** – Understands user queries and provides contextual answers.
+- 📊 **Ticket Classification & Validation** – Categorizes tickets and evaluates model performance.
+- 📈 **Interactive Dashboard** – Displays metrics like Accuracy, Precision, Recall, and F1-score.
+- 🔄 **Google Sheets Integration** – Dynamically reads and updates records using Google Sheets API.
+- 💬 **Slack Notification System** – Sends alerts to a Slack channel for low coverage or critical updates.
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Component | Technology |
-|------------|-------------|
-| Frontend / UI | Streamlit |
-| Backend | Python 3.10+ |
-| Data Handling | Pandas, NumPy |
-| Machine Learning | Scikit-learn, NLTK |
-| Async Execution | AsyncIO, Nest-AsyncIO |
-| External Integration | Google Sheets API |
-| Notifications | Stack-based offline alert system |
+| Component            | Technology                             |
+| -------------------- | -------------------------------------- |
+| Frontend / UI        | Streamlit                              |
+| Backend              | Python 3.10+                           |
+| Data Handling        | Pandas                                 |
+| Async Execution      | AsyncIO, Nest-AsyncIO                  |
+| External Integration | Google Sheets API                      |
+| Notifications        | Slack messaging for low coverage areas |
+
+---
+
+## 🔁 How It Works
+
+1. User or agent submits a support ticket via integrated form or sheet.
+2. Data is read dynamically from Google Sheets.
+3. The AI model processes the ticket, classifies its category, and searches related articles.
+4. Results are displayed on Streamlit Dashboard.
+5. Slack notifications are triggered for low coverage or missing knowledge areas.
 
 ---
 
 ## ⚙️ Setup and Installation Guide
 
-Follow these steps to set up and run the project locally 👇
+Follow these steps to set up and run the project locally:
 
 ---
 
 ### 1️⃣ Clone the Repository
+
 ```bash
 git clone https://github.com/BalajiSunkara-123/AI-Powered-Knowledge-Engine-for-Smart-Support-and-Ticket-Resolution.git
 cd AI-Powered-Knowledge-Engine-for-Smart-Support-and-Ticket-Resolution
+```
 
-### 2️⃣ Create a Virtual Environment
-Create and activate a virtual environment to keep dependencies isolated.
+### Create a Virtual Environment
 
 ```bash
 # For Windows
@@ -63,46 +73,90 @@ env\Scripts\activate
 # For macOS/Linux
 python3 -m venv env
 source env/bin/activate
-3️⃣ Install Required Packages
+```
+
+### 3️⃣ Install Required Packages
+
+```bash
 pip install -r requirements.txt
+```
 
-4️⃣ Setup Google Sheets API Credentials
+### 4️⃣ Setup Google Sheets API Credentials
 
-Go to Google Cloud Console
-.
+Follow these steps to configure Google Sheets API access:
 
-Create/select a project.
+1. **Go to Google Cloud Console**  
+   [https://console.cloud.google.com/](https://console.cloud.google.com/)
 
-Enable APIs:
+2. **Create or select a project**.
 
-Google Sheets API
+3. **Enable APIs**:
 
-Google Drive API
+   - Google Sheets API
+   - Google Drive API
 
-Create a Service Account → Add Key → Create JSON Key
+4. **Create a Service Account**:
 
-Rename the file to credentials.json
+   - Go to **IAM & Admin → Service Accounts**
+   - Click **Create Service Account**
+   - Assign a name and description
+   - Click **Create and Continue**
 
-Place it in the project root.
+5. **Generate JSON Key**:
 
-Add it to .gitignore:
+   - Click **Add Key → Create New Key → JSON**
+   - Download the key file
 
+6. **Rename the downloaded key**:
+
+```text
 credentials.json
+```
 
-5️⃣ Create .env File
+7. **_Place it in the project root directory._**
+8. **_Add credentials.json to .gitignore_**
 
-Add environment variables in .env at the root:
+### 5️⃣ Create .env File
 
+Add environment variables in .env at the project root:
+
+```bash
 GOOGLE_SHEETS_CREDENTIALS="credentials.json"
 SPREADSHEET_ID="your_google_sheet_id_here"
+SLACK_WEBHOOK_URL="your_slack_webhook_url_here"
+```
 
+### 6️⃣ Run the Streamlit App
 
-Find SPREADSHEET_ID in your Google Sheet URL:
-
-https://docs.google.com/spreadsheets/d/<SPREADSHEET_ID>/edit#gid=0
-
-6️⃣ Run Streamlit App
+```bash
 streamlit run app.py
+```
 
+Open your browser at: http://localhost:8501
 
-Visit http://localhost:8501 in your browser to use the app.
+---
+
+### Project Architecture / Workflow Diagram
+
+## ![Architecture](./docs/architecture.png)
+
+## 🖼️ Sample Output
+
+![Dashboard Screenshot](./docs/dashboard.png)
+
+---
+
+## 🌱 Future Improvements
+
+- Fine-tune chatbot for deeper contextual understanding.
+- Add multilingual support.
+- Integrate sentiment analysis for ticket prioritization.
+- Extend dashboard analytics for trend prediction.
+
+## 🤝 Contributing
+
+Pull requests are welcome. For major changes, please open an issue first to discuss what you’d like to change.
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
